@@ -1,31 +1,29 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if(s.size() != t.size()){ //Anagrams MUST be the same size, return false if the strings aren't
-            return false;
-        }
-        unordered_map<char, int> ana; //Make a hashmap for our anagrams
-
-        for(int i = 0; i < s.size(); i++){ //Store our characters and their frequencies into the hashmap of string s
-            if(ana.contains(s[i])){
-                ana[s[i]] += 1;
-            }else{
+        //Need to be able tell if string s and string t are both an anagram
+        //One way to solve this is with a hashmap
+        unordered_map<char, int> ana; //Declare a hashmap of chars and ints
+        if (s.size() != t.size()) return false; //Added this just to help with runtime
+        for(size_t i = 0; i < s.size(); i++){ //Build out our hashmap with first letter
+            if(!ana.insert({s[i], 1}).second){
                 ana[s[i]]++;
             }
         }
-
-        for(int i = 0; i < t.size(); i++){ //Loop through our t string and check hashmap
-            if(ana.contains(t[i])){
-                //If they are an anagram, then the frequency should go down to 0. Since it has the same # of chars for each string
+        for(size_t i = 0; i < t.size(); i++){ //Checking our hashmap, if we add any letters return false otherwise subtract from letters
+            if(!ana.insert({t[i], 1}).second){
                 ana[t[i]]--;
-                if(ana[t[i]] < 0){ //If it falls below 0, its not an anagram
-                    return false;
-                }
             }else{
-                return false; //If it has a new char, then it is not an anagram
+                return false;
             }
         }
 
-    return true; //Returns true if it passes all above checks
+        for(auto i : ana){
+            if(i.second != 0) return false; //If all our letters our 0 we have an anagram otherwise its false
+            else continue;
+        }
+
+        return true;
     }
+    //Complexity: O(S+T)
 };
