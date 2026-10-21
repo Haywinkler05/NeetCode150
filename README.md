@@ -21,7 +21,7 @@ The goal of going through the NeetCode 150 is to challenge my data structures an
 
 | Topic | Problem | Difficulty | Time | Space | Status |
 |---|---|---|---|---|---|
-| Arrays & Hashing | Contains Duplicate | Easy | | | Done |
+| Arrays & Hashing | Contains Duplicate | Easy |O(N) |O(1) | Done |
 | Arrays & Hashing | Valid Anagram | Easy | O(N) | O(1) | Done |
 | Arrays & Hashing | Two Sum | Easy | O(N) | O(N) | Done |
 | Arrays & Hashing | Group Anagrams | Medium | O(N · L log L) | O(N · L) | Done |
