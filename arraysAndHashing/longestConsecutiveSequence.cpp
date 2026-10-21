@@ -1,29 +1,24 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        if(nums.size() == 0){return 0;}//Saves time if the num is empt
-        set<int> seq; //This sorts with a time complexity of O(Log n)
-        int totalLongest = 0;
-        int currLongest = 1;
-        for(int i = 0; i < nums.size(); i++){
-            seq.insert(nums[i]);
-        }
-       
-        for(auto it = seq.begin(); it != seq.end(); ++it){ //Uses it to loop through the set giving us O(N)
-            auto nextIt = next(it);
-            if(nextIt != seq.end()){
-                if((*it + 1) == *nextIt){
-                currLongest++;
-            }else{
-                if(currLongest > totalLongest) totalLongest = currLongest;
-                currLongest = 1;
-            }
-        
-            }
-        //Total time being O(n log n)
-    }
-    if(totalLongest > currLongest) return totalLongest;
-    return currLongest;
+        set <int> seq; //Declare a set
+        for(size_t  i = 0; i < nums.size(); i++) seq.insert(nums[i]); //Build
+        int longCons = 1;
+        int consq = 1;
+        if(!seq.empty()){
+            for(auto it = seq.begin(); it != prev(seq.end()); ++it){ //Loop through set
+                if(*it + 1 == *next(it)) consq++; //See if it is consqeutive 
+                else consq = 1;
 
+                if(consq >= longCons) longCons = consq; //If we have a longer consq number set our longest one
+                
+            }
+            return longCons; //Return the longest num
+        
+        }
+        
+        return 0;
+
+        //Time complexity: O(N log N)
     }
 };
