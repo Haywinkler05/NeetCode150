@@ -1,0 +1,47 @@
+class Solution {
+public:
+    
+    int evalRPN(vector<string>& tokens) {
+        stack<int>RPN; //Declare our stack
+        int eval = 0; //Eval start
+        for(size_t i = 0; i < tokens.size(); i++){
+            if(tokens[i] == "+"){ //Wanted to use switch but since it was a string we had to use an if
+                int first = RPN.top();
+                RPN.pop();
+                int second = RPN.top();
+                RPN.pop();
+                eval = first + second;
+                RPN.push(eval);
+            }
+            else if(tokens[i] == "-"){
+                int first = RPN.top();
+                RPN.pop();
+                int second = RPN.top();
+                RPN.pop();
+                eval = second - first;
+                RPN.push(eval);
+            }
+            else if(tokens[i] == "*"){
+                int first = RPN.top();
+                RPN.pop();
+                int second = RPN.top();
+                RPN.pop();
+                eval = first * second;
+                RPN.push(eval);
+            }
+            else if(tokens[i] == "/"){
+                int first = RPN.top();
+                RPN.pop();
+                int second = RPN.top();
+                RPN.pop();
+                eval = second / first;
+                RPN.push(eval);
+            }else{
+                int tmp = stoi(tokens[i]);
+                RPN.push(tmp);
+            }
+        }
+        return RPN.top();
+    //Complexity: O(N)
+    }
+};
