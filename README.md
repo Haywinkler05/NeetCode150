@@ -4,7 +4,7 @@
 The goal of going through the NeetCode 150 is to challenge my data structures and algorithms knowledge and become a better programmer. My intent is to finish all 150 problems and build the skills to approach unfamiliar LeetCode problems with confidence.
 
 ## Current Streak
-6 days
+8 days
 
 ## Plan
 - Target pace: 2 problems a day until I finish all 150.
